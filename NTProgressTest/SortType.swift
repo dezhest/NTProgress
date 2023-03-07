@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+enum SortType: String, CaseIterable {
+    case date,name,price,amount
+}
