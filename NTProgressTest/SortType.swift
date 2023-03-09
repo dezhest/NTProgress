@@ -8,5 +8,9 @@
 import Foundation
 
 enum SortType: String, CaseIterable {
-    case date,name,price,amount, side
+    case date = "Сортировка по дате изменения сделки"
+    case name = "Сортировка по имени инструмента"
+    case price = "Сортировка по цене сделки"
+    case amount = "Сортировка по объему сделки"
+    case side = "Сортировка по стороне сделки"
 }

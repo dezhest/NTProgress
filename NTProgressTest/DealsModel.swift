@@ -8,5 +8,5 @@
 import Foundation
 
 struct DealsModel {
-    var pickerSelection = SortType.date
+    var selectedSortingOption = SortType.date
 }

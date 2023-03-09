@@ -22,7 +22,7 @@ class DealsViewModel: ObservableObject {
     let queue = DispatchQueue(label: "DealsMakeQueue")
     
     private func getSortingMethod() -> (Deal, Deal) -> Bool {
-        switch model.pickerSelection {
+        switch model.selectedSortingOption {
           case(SortType.date):
             return { deal, deal2 in
                 deal.dateModifier.timeIntervalSince1970 < deal2.dateModifier.timeIntervalSince1970
@@ -59,7 +59,7 @@ class DealsViewModel: ObservableObject {
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.updateDeals()
         }
-        RunLoop.main.add(self.timer, forMode: .common)
+//        RunLoop.main.add(self.timer, forMode: .common)
         self.server.subscribeToDeals { newDeals in
             if self.deals.isEmpty {
                 self.deals = self.getMergedDataArray(sortedData: [], newData: newDeals)
