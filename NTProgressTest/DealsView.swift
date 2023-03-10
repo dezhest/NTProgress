@@ -92,8 +92,24 @@ struct DealsView: View {
                             Image(systemName: "arrow.up.arrow.down")
                         }
                     }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        if viewModel.model.destinationArrow {
+                            Image(systemName: "arrow.up")
+                                .foregroundColor(.green)
+                                .onTapGesture {
+                                    viewModel.model.destinationArrow.toggle()
+                                }
+                        } else {
+                            Image(systemName: "arrow.down")
+                                .foregroundColor(.red)
+                                .onTapGesture {
+                                    viewModel.model.destinationArrow.toggle()
+                                }
+                        }
+                    }
                 }
             }
+            .navigationBarTitle("Deals")
         }
         .background(Color("Background"))
         .onAppear {

@@ -9,4 +9,5 @@ import Foundation
 
 struct DealsModel {
     var selectedSortingOption = SortType.date
+    var destinationArrow = true
 }
