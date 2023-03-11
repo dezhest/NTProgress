@@ -8,6 +8,9 @@
 import SwiftUI
 
 class DealsViewModel: ObservableObject {
+    let queue = DispatchQueue(label: "DealsMakeQueue")
+    private var newDealsToSort: [Deal] = []
+    private var timer = Timer()
     private let server = Server()
     @Published var model = DealsModel()
     @Published var deals: [Deal] = [] {
@@ -17,71 +20,73 @@ class DealsViewModel: ObservableObject {
             }
         }
     }
-    private var newDealsToSort: [Deal] = []
-    private var timer = Timer()
-    let queue = DispatchQueue(label: "DealsMakeQueue")
+
     
     private func getSortingMethod() -> (Deal, Deal) -> Bool {
         switch (model.selectedSortingOption, model.destinationArrow) {
-          case(SortType.date, true):
+        case(SortType.date, true):
             return { deal, deal2 in
                 deal.dateModifier.timeIntervalSince1970 > deal2.dateModifier.timeIntervalSince1970
             }
         case(SortType.date, false):
-          return { deal, deal2 in
-              deal.dateModifier.timeIntervalSince1970 < deal2.dateModifier.timeIntervalSince1970
-          }
-          case(SortType.name, true):
+            return { deal, deal2 in
+                deal.dateModifier.timeIntervalSince1970 < deal2.dateModifier.timeIntervalSince1970
+            }
+        case(SortType.name, true):
             return { deal, deal2 in
                 deal.instrumentName > deal2.instrumentName
             }
         case(SortType.name, false):
-          return { deal, deal2 in
-              deal.instrumentName < deal2.instrumentName
-          }
-          case(SortType.price, true):
+            return { deal, deal2 in
+                deal.instrumentName < deal2.instrumentName
+            }
+        case(SortType.price, true):
             return { deal, deal2 in
                 deal.price > deal2.price
             }
         case(SortType.price,false):
-          return { deal, deal2 in
-              deal.price < deal2.price
-          }
-          case(SortType.amount, true):
+            return { deal, deal2 in
+                deal.price < deal2.price
+            }
+        case(SortType.amount, true):
             return { deal, deal2 in
                 deal.amount > deal2.amount
             }
         case(SortType.amount, false):
-          return { deal, deal2 in
-              deal.amount < deal2.amount
-          }
+            return { deal, deal2 in
+                deal.amount < deal2.amount
+            }
         case(SortType.side, true):
-          return { deal, deal2 in
-              "\(deal.side)" > "\(deal2.side)"
-          }
+            return { deal, deal2 in
+                "\(deal.side)" > "\(deal2.side)"
+            }
         case(SortType.side, false):
-          return { deal, deal2 in
-              "\(deal.side)" < "\(deal2.side)"
-          }
+            return { deal, deal2 in
+                "\(deal.side)" < "\(deal2.side)"
+            }
         }
     }
     
     func updateDeals() {
         print("UPDATE \(newDealsToSort.count) \(deals.count)")
-            self.deals = self.getMergedDataArray(sortedData: self.deals, newData: self.newDealsToSort)
-            self.newDealsToSort = []
+        self.deals = self.getMergedDataArray(sortedData: self.deals, newData: self.newDealsToSort)
+        self.newDealsToSort = []
     }
     
     func startDealsPipe() {
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.updateDeals()
         }
-//        RunLoop.main.add(self.timer, forMode: .common)
+        //        RunLoop.main.add(self.timer, forMode: .common)
         self.server.subscribeToDeals { newDeals in
-            if self.deals.isEmpty {
-                self.deals = self.getMergedDataArray(sortedData: [], newData: newDeals)
-            } else {
-                self.newDealsToSort += newDeals
+            self.queue.async {
+                if self.deals.isEmpty {
+                    self.deals = self.getMergedDataArray(sortedData: [], newData: newDeals)
+                } else {
+                    DispatchQueue.main.async {
+                        self.newDealsToSort += newDeals
+                    }
+                }
             }
         }
     }
@@ -98,20 +103,20 @@ class DealsViewModel: ObservableObject {
                 mergedData.append(sortedData[i])
                 i += 1
             } else {
-                    mergedData.append(sortedNewData[j])
-                    j += 1
+                mergedData.append(sortedNewData[j])
+                j += 1
             }
         }
         
         // добить остатки
-            while i < sortedData.count {
-                mergedData.append(sortedData[i])
-                i += 1
-            }
-            while j < sortedNewData.count {
-                mergedData.append(sortedNewData[j])
-                j += 1
-            }
+        while i < sortedData.count {
+            mergedData.append(sortedData[i])
+            i += 1
+        }
+        while j < sortedNewData.count {
+            mergedData.append(sortedNewData[j])
+            j += 1
+        }
         
         return mergedData
     }

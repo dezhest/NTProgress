@@ -16,30 +16,14 @@ struct DealsView: View {
     init() {
         date = Date()
         dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:SS dd.MM.yy"
+        dateFormatter.dateFormat = "HH:mm:ss dd.MM.yy"
     }
     var body: some View {
         NavigationView {
             ZStack {
                 Color("Background").edgesIgnoringSafeArea(.all)
                 VStack {
-                    HStack {
-                        Text("Instrument")
-                            .font(.system(size: 12, design: .default))
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                        Text("Price")
-                            .font(.system(size: 12, design: .default))
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                        Text("Amount")
-                            .font(.system(size: 12, design: .default))
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                        Text("Side")
-                            .font(.system(size: 12, design: .default))
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                    }
-                    .padding(.horizontal, 10)
-                    .padding(7)
-                    .background(Color("Panel"))
+                    PanelUpperLine()
                     ScrollView {
                         LazyVStack {
                             ForEach(viewModel.deals, id: \.id) { deal in
@@ -92,21 +76,6 @@ struct DealsView: View {
                             Image(systemName: "arrow.up.arrow.down")
                         }
                     }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        if viewModel.model.destinationArrow {
-                            Image(systemName: "arrow.up")
-                                .foregroundColor(.green)
-                                .onTapGesture {
-                                    viewModel.model.destinationArrow.toggle()
-                                }
-                        } else {
-                            Image(systemName: "arrow.down")
-                                .foregroundColor(.red)
-                                .onTapGesture {
-                                    viewModel.model.destinationArrow.toggle()
-                                }
-                        }
-                    }
                 }
             }
             .navigationBarTitle("Deals")
@@ -115,6 +84,7 @@ struct DealsView: View {
         .onAppear {
             viewModel.startDealsPipe()
         }
+        .environmentObject(viewModel)
     }
 }
 
