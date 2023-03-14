@@ -31,10 +31,14 @@ struct PanelUpperLine: View {
             }
             .frame(minWidth: 0, maxWidth: .infinity)
             .onTapGesture {
-                
+                if viewModel.model.destinationArrow {
+                    viewModel.sortingMethod = viewModel.nameSortDown
+                }
+                else {
+                    viewModel.sortingMethod = viewModel.nameSortUp
+                }
                 viewModel.model.selectedSortingOption = .name
                 viewModel.model.destinationArrow.toggle()
-                
             }
             HStack {
                 Text("Price")
@@ -57,9 +61,14 @@ struct PanelUpperLine: View {
             .padding(0)
             .frame(minWidth: 0, maxWidth: .infinity)
             .onTapGesture {
+                if viewModel.model.destinationArrow {
+                    viewModel.sortingMethod = viewModel.priceSortDown
+                }
+                else {
+                    viewModel.sortingMethod = viewModel.priceSortUp
+                }
                 viewModel.model.selectedSortingOption = .price
                 viewModel.model.destinationArrow.toggle()
-                
             }
             HStack {
                 Text("Amount")
@@ -82,9 +91,14 @@ struct PanelUpperLine: View {
             .padding(0)
             .frame(minWidth: 0, maxWidth: .infinity)
             .onTapGesture {
+                if viewModel.model.destinationArrow {
+                    viewModel.sortingMethod = viewModel.amountSortDown
+                }
+                else {
+                    viewModel.sortingMethod = viewModel.amountSortUp
+                }
                 viewModel.model.selectedSortingOption = .amount
                 viewModel.model.destinationArrow.toggle()
-                
             }
             HStack {
                 Text("Side")
@@ -107,9 +121,14 @@ struct PanelUpperLine: View {
             .padding(0)
             .frame(minWidth: 0, maxWidth: .infinity)
             .onTapGesture {
+                if viewModel.model.destinationArrow {
+                    viewModel.sortingMethod = viewModel.sideSortUp
+                }
+                else {
+                    viewModel.sortingMethod = viewModel.sideSortDown
+                }
                 viewModel.model.selectedSortingOption = .side
                 viewModel.model.destinationArrow.toggle()
-                
             }
         }
         .padding(.horizontal, 10)
