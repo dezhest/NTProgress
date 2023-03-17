@@ -69,7 +69,7 @@ struct DealsView: View {
                         Menu {
                             ForEach(SortType.allCases, id: \.self) { option in
                                 Button(option.rawValue) {
-                                    viewModel.model.selectedSortingOption = option
+                                    viewModel.selectedSortingOption = option
                                 }
                             }
                         } label: {
