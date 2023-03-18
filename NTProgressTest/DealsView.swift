@@ -8,16 +8,13 @@
 import SwiftUI
 import Foundation
 
-struct DealsView: View {
-    @StateObject var viewModel = DealsViewModel()
-    @Environment(\.colorScheme) var colorScheme
-    let date: Date
-    let dateFormatter: DateFormatter
-    init() {
-        date = Date()
-        dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss dd.MM.yy"
+struct DealsView: View, Equatable {
+    static func == (lhs: DealsView, rhs: DealsView) -> Bool {
+        return true
     }
+    @State private var isLoading = true
+    let columns = [GridItem(.flexible())]
+    @StateObject var viewModel = DealsViewModel()
     var body: some View {
         NavigationView {
             ZStack {
@@ -25,43 +22,16 @@ struct DealsView: View {
                 VStack {
                     PanelUpperLine()
                     ScrollView {
-                        LazyVStack {
+                        LazyVGrid(columns: columns) {
                             ForEach(viewModel.deals, id: \.id) { deal in
-                                VStack {
-                                    Text("\(deal.dateModifier, formatter: dateFormatter)")
-                                        .font(.system(size: 12, design: .default))
-                                        .foregroundColor(.gray)
-                                        .frame(maxWidth: .infinity, maxHeight: 30 ,alignment: .leading)
-                                        .padding(.horizontal, 20)
-                                    Spacer()
-                                    HStack {
-                                        Text(deal.instrumentName.removeChars)
-                                            .font(.system(size: 12, design: .default))
-                                            .frame(maxWidth: .infinity)
-                                        Text(String(format: "%.2f", deal.price))
-                                            .font(.system(size: 12, design: .default))
-                                            .frame(maxWidth: .infinity)
-                                        Text("\(Int(deal.amount).formattedWithSeparator)")
-                                            .font(.system(size: 12, design: .default))
-                                            .frame(maxWidth: .infinity)
-                                        Text(deal.side == .buy ? "Buy" : "Sell")
-                                            .font(.system(size: 12, design: .default))
-                                            .frame(maxWidth: .infinity)
-                                            .foregroundColor(deal.side == .buy ? .green : .red)
-                                    }
-                                    .frame(maxHeight: 30 ,alignment: .leading)
-                                    .foregroundColor(colorScheme == .dark ? .white : .black)
-                                }
-                                .background(RoundedRectangle(cornerRadius: 20))
-                                .foregroundColor(Color("Background"))
-                                .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
-                                .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
-                                .padding(.vertical, 10)
-                                .padding(.horizontal, 10)
-                                .frame(height: 100)
+                                CardView(deal: deal)
+                                    .equatable()
+                                    
                             }
                         }
+                        .id(UUID())
                     }
+                    
                     .offset(y: -8)
                 }
                 .toolbar {

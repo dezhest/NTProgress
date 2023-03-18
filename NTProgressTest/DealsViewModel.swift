@@ -9,29 +9,50 @@ import SwiftUI
 
 class DealsViewModel: ObservableObject {
     private let server = Server()
-//    @Published var model = DealsModel()
+    //    @Published var model = DealsModel()
     @Published var deals: [Deal] = []
     private var newDealsToSort: [Deal] = []
-    private var timer = Timer()
+    private var timer: Timer?
     
     var selectedSortingOption = SortType.date
     var destinationArrow = true
-    
+    var isPaused = false
+    var shouldStartTimerAfterPause = false
     lazy var sortingMethod = dataSortUp {
-        willSet {
-            print("changed ")
-            print("\(String(describing: newValue))")
-            DispatchQueue.main.async { [self] in
-                deals = deals.sorted(by: newValue)
+        didSet {
+            if isPaused {
+                print("уже остановлен")
+                shouldStartTimerAfterPause = true
+            } else {
+                pauseTimer()
+                timer?.invalidate()
             }
+        }
+    }
+    func pauseTimer() {
+        isPaused = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.resumeTimer()
+            self?.startDealsPipe()
+            print("возобновлен")
+        }
+        DispatchQueue.main.async { [self] in
+            deals = deals.sorted(by: sortingMethod)
+        }
+        print("остановлен")
+    }
+    func resumeTimer() {
+        isPaused = false
+        if shouldStartTimerAfterPause {
+            shouldStartTimerAfterPause = false
         }
     }
     
     var dataSortUp: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
-        deal.dateModifier.timeIntervalSince1970 < deal2.dateModifier.timeIntervalSince1970
+        deal.dateModifier.timeIntervalSince1970 > deal2.dateModifier.timeIntervalSince1970
     }
     var dataSortDown: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
-        deal.dateModifier.timeIntervalSince1970 > deal2.dateModifier.timeIntervalSince1970
+        deal.dateModifier.timeIntervalSince1970 < deal2.dateModifier.timeIntervalSince1970
     }
     var nameSortUp: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
         deal.instrumentName > deal2.instrumentName

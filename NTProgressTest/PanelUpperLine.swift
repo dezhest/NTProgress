@@ -31,14 +31,16 @@ struct PanelUpperLine: View {
             }
             .frame(minWidth: 0, maxWidth: .infinity)
             .onTapGesture {
-                if viewModel.destinationArrow {
-                    viewModel.sortingMethod = viewModel.nameSortDown
+                DispatchQueue.main.async { [self] in
+                    if viewModel.destinationArrow {
+                        viewModel.sortingMethod = viewModel.nameSortDown
+                    }
+                    else {
+                        viewModel.sortingMethod = viewModel.nameSortUp
+                    }
+                    viewModel.selectedSortingOption = .name
+                    viewModel.destinationArrow.toggle()
                 }
-                else {
-                    viewModel.sortingMethod = viewModel.nameSortUp
-                }
-                viewModel.selectedSortingOption = .name
-                viewModel.destinationArrow.toggle()
             }
             HStack {
                 Text("Price")
@@ -61,14 +63,16 @@ struct PanelUpperLine: View {
             .padding(0)
             .frame(minWidth: 0, maxWidth: .infinity)
             .onTapGesture {
-                if viewModel.destinationArrow {
-                    viewModel.sortingMethod = viewModel.priceSortDown
+                DispatchQueue.main.async { [self] in
+                    if viewModel.destinationArrow {
+                        viewModel.sortingMethod = viewModel.priceSortDown
+                    }
+                    else {
+                        viewModel.sortingMethod = viewModel.priceSortUp
+                    }
+                    viewModel.selectedSortingOption = .price
+                    viewModel.destinationArrow.toggle()
                 }
-                else {
-                    viewModel.sortingMethod = viewModel.priceSortUp
-                }
-                viewModel.selectedSortingOption = .price
-                viewModel.destinationArrow.toggle()
             }
             HStack {
                 Text("Amount")
@@ -91,14 +95,16 @@ struct PanelUpperLine: View {
             .padding(0)
             .frame(minWidth: 0, maxWidth: .infinity)
             .onTapGesture {
-                if viewModel.destinationArrow {
-                    viewModel.sortingMethod = viewModel.amountSortDown
+                DispatchQueue.main.async { [self] in
+                    if viewModel.destinationArrow {
+                        viewModel.sortingMethod = viewModel.amountSortDown
+                    }
+                    else {
+                        viewModel.sortingMethod = viewModel.amountSortUp
+                    }
+                    viewModel.selectedSortingOption = .amount
+                    viewModel.destinationArrow.toggle()
                 }
-                else {
-                    viewModel.sortingMethod = viewModel.amountSortUp
-                }
-                viewModel.selectedSortingOption = .amount
-                viewModel.destinationArrow.toggle()
             }
             HStack {
                 Text("Side")
@@ -121,14 +127,16 @@ struct PanelUpperLine: View {
             .padding(0)
             .frame(minWidth: 0, maxWidth: .infinity)
             .onTapGesture {
-                if viewModel.destinationArrow {
-                    viewModel.sortingMethod = viewModel.sideSortUp
+                DispatchQueue.main.async { [self] in
+                    if viewModel.destinationArrow {
+                        viewModel.sortingMethod = viewModel.sideSortUp
+                    }
+                    else {
+                        viewModel.sortingMethod = viewModel.sideSortDown
+                    }
+                    viewModel.selectedSortingOption = .side
+                    viewModel.destinationArrow.toggle()
                 }
-                else {
-                    viewModel.sortingMethod = viewModel.sideSortDown
-                }
-                viewModel.selectedSortingOption = .side
-                viewModel.destinationArrow.toggle()
             }
         }
         .padding(.horizontal, 10)
