@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		C30FC3B929BBAC3900284099 /* PanelUpperLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30FC3B829BBAC3900284099 /* PanelUpperLine.swift */; };
 		C392BA7C29C4BCB80020001F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392BA7B29C4BCB80020001F /* CardView.swift */; };
+		C392BA7E29C623B50020001F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392BA7D29C623B50020001F /* Date.swift */; };
+		C392BA8229C663F20020001F /* LoadingCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392BA8129C663F20020001F /* LoadingCircle.swift */; };
+		C392BA8429C66EA50020001F /* tryyy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392BA8329C66EA50020001F /* tryyy.swift */; };
 		C39FB39829BA4D1100968FB8 /* DealsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39FB39729BA4D1100968FB8 /* DealsViewModel.swift */; };
 		C39FB39A29BA4D3700968FB8 /* DealsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39FB39929BA4D3700968FB8 /* DealsModel.swift */; };
 		C3A0EF1629B792E80018DBE1 /* NTProgressTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A0EF1529B792E80018DBE1 /* NTProgressTestApp.swift */; };
@@ -24,6 +27,9 @@
 /* Begin PBXFileReference section */
 		C30FC3B829BBAC3900284099 /* PanelUpperLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelUpperLine.swift; sourceTree = "<group>"; };
 		C392BA7B29C4BCB80020001F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		C392BA7D29C623B50020001F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		C392BA8129C663F20020001F /* LoadingCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCircle.swift; sourceTree = "<group>"; };
+		C392BA8329C66EA50020001F /* tryyy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tryyy.swift; sourceTree = "<group>"; };
 		C39FB39729BA4D1100968FB8 /* DealsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsViewModel.swift; sourceTree = "<group>"; };
 		C39FB39929BA4D3700968FB8 /* DealsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsModel.swift; sourceTree = "<group>"; };
 		C3A0EF1229B792E80018DBE1 /* NTProgressTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NTProgressTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +84,8 @@
 				C3A9872B29BA5EB400F61302 /* Extension */,
 				C3A0EF1929B792EA0018DBE1 /* Assets.xcassets */,
 				C3A0EF1B29B792EA0018DBE1 /* Preview Content */,
+				C392BA8129C663F20020001F /* LoadingCircle.swift */,
+				C392BA8329C66EA50020001F /* tryyy.swift */,
 			);
 			path = NTProgressTest;
 			sourceTree = "<group>";
@@ -95,6 +103,7 @@
 			children = (
 				C3A9872C29BA5ECF00F61302 /* String.swift */,
 				C3A9872E29BA5EE900F61302 /* Formatter.swift */,
+				C392BA7D29C623B50020001F /* Date.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -177,7 +186,10 @@
 				C3A0EF1629B792E80018DBE1 /* NTProgressTestApp.swift in Sources */,
 				C3A9872F29BA5EE900F61302 /* Formatter.swift in Sources */,
 				C30FC3B929BBAC3900284099 /* PanelUpperLine.swift in Sources */,
+				C392BA7E29C623B50020001F /* Date.swift in Sources */,
 				C392BA7C29C4BCB80020001F /* CardView.swift in Sources */,
+				C392BA8429C66EA50020001F /* tryyy.swift in Sources */,
+				C392BA8229C663F20020001F /* LoadingCircle.swift in Sources */,
 				C3A0EF2929B7B29B0018DBE1 /* SortType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

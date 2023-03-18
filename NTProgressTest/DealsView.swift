@@ -8,47 +8,52 @@
 import SwiftUI
 import Foundation
 
-struct DealsView: View, Equatable {
-    static func == (lhs: DealsView, rhs: DealsView) -> Bool {
-        return true
-    }
-    @State private var isLoading = true
-    let columns = [GridItem(.flexible())]
+struct DealsView: View {
     @StateObject var viewModel = DealsViewModel()
+    let columns = [GridItem(.flexible())]
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color("Background").edgesIgnoringSafeArea(.all)
-                VStack {
-                    PanelUpperLine()
-                    ScrollView {
-                        LazyVGrid(columns: columns) {
-                            ForEach(viewModel.deals, id: \.id) { deal in
-                                CardView(deal: deal)
-                                    .equatable()
-                                    
-                            }
-                        }
-                        .id(UUID())
-                    }
-                    
-                    .offset(y: -8)
-                }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Menu {
-                            ForEach(SortType.allCases, id: \.self) { option in
-                                Button(option.rawValue) {
-                                    viewModel.selectedSortingOption = option
+        ZStack{
+            NavigationView {
+                ZStack {
+                    Color("Background").edgesIgnoringSafeArea(.all)
+                    VStack {
+                        PanelUpperLine()
+                        ScrollView {
+                            LazyVGrid(columns: columns) {
+                                ForEach(viewModel.deals, id: \.id) { deal in
+                                    CardView(deal: deal)
                                 }
                             }
-                        } label: {
-                            Image(systemName: "arrow.up.arrow.down")
+                            .id(UUID())
+                        }
+                        .offset(y: -8)
+                    }
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Menu {
+                                ForEach(SortType.allCases, id: \.self) { option in
+                                    Button(option.rawValue) {
+                                        viewModel.selectedSortingOption = option
+                                    }
+                                }
+                            } label: {
+                                Image(systemName: "arrow.up.arrow.down")
+                            }
                         }
                     }
                 }
+                .navigationBarTitle("Deals")
             }
-            .navigationBarTitle("Deals")
+            if viewModel.isPaused == true {
+                ZStack{
+                    LoadingCircle()
+                    Text(" ")
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                        .background(Color.black)
+                        .edgesIgnoringSafeArea(.all)
+                        .opacity(0.4)
+                }
+            }
         }
         .background(Color("Background"))
         .onAppear {

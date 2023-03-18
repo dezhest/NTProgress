@@ -37,7 +37,9 @@ class DealsViewModel: ObservableObject {
             print("возобновлен")
         }
         DispatchQueue.main.async { [self] in
-            deals = deals.sorted(by: sortingMethod)
+//            if selectedSortingOption != .side {
+                deals = deals.sorted(by: sortingMethod)
+//            }
         }
         print("остановлен")
     }
@@ -73,20 +75,24 @@ class DealsViewModel: ObservableObject {
         deal.amount < deal2.amount
     }
     var sideSortUp: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
-        "\(deal.side)" > "\(deal2.side)"
+        deal.side.hashValue < deal2.side.hashValue
     }
     var sideSortDown: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
-        "\(deal.side)" < "\(deal2.side)"
+        deal.side.hashValue > deal2.side.hashValue
     }
     
     
     func updateDeals() {
         print("UPDATE \(newDealsToSort.count) \(deals.count)")
         DispatchQueue.main.async { [self] in
-            deals = getMergedDataArrayDate(sortedData: deals, newData: newDealsToSort, sortingMethod: sortingMethod)
-            newDealsToSort = []
+//            if selectedSortingOption == .side {
+//                deals = sideSorting(sortedData: deals, newData: newDealsToSort)
+//            } else {
+                deals = getMergedDataArrayDate(sortedData: deals, newData: newDealsToSort, sortingMethod: sortingMethod)
+                newDealsToSort = []
+//            }
+            
         }
-        
     }
     
     func startDealsPipe() {
@@ -131,5 +137,17 @@ class DealsViewModel: ObservableObject {
             }
             return mergedData
         }
+    }
+    private func sideSorting(sortedData: [Deal], newData: [Deal]) -> [Deal] {
+        var mergedData = [Deal]()
+        let sortedDataBySide = sortedData + newData
+        for i in sortedDataBySide {
+            if i.side == .sell {
+                mergedData.append(i)
+            } else {
+                mergedData.insert(i, at: 0)
+            }
+        }
+        return mergedData
     }
 }

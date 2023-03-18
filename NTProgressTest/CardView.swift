@@ -9,17 +9,10 @@ import SwiftUI
 
 struct CardView: View {
     var deal: Deal
-//    let date: Date
-//    let dateFormatter: DateFormatter
     @Environment(\.colorScheme) var colorScheme
-//    init() {
-//        date = Date()
-//        dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "HH:mm:ss dd.MM.yy"
-//    }
     var body: some View {
         VStack {
-            Text("\(deal.dateModifier)")
+            Text("\(deal.dateModifier.formattedString())")
                 .font(.system(size: 12, design: .default))
                 .foregroundColor(.gray)
                 .frame(maxWidth: .infinity, maxHeight: 30 ,alignment: .leading)
