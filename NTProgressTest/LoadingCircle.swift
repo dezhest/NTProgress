@@ -10,6 +10,7 @@ import SwiftUI
 struct LoadingCircle: View {
     @State private var isLoading = false
     @State private var rotationAngle: Angle = .degrees(0)
+    @State var rotation = 0
     let screenSize = UIScreen.main.bounds
     var body: some View {
         VStack {
@@ -18,10 +19,11 @@ struct LoadingCircle: View {
                 .stroke(Color.blue, lineWidth: 10)
                 .frame(width: 80, height: 80)
                 .rotationEffect(Angle(degrees: isLoading ? 36000 : 0))
-                .animation(Animation.linear(duration: 100).repeatForever(autoreverses: true))
+                .animation(.linear(duration: 100), value: rotation)
         }
         .onAppear {
             self.isLoading = true
+            rotation += 36000
         }
         .onDisappear {
             self.isLoading = false

@@ -33,7 +33,7 @@ struct CardView: View {
                     .frame(maxWidth: .infinity)
                     .foregroundColor(deal.side == .buy ? .green : .red)
             }
-            .frame(maxHeight: 30 ,alignment: .leading)
+            .frame(maxHeight: 30 ,alignment: .trailing)
             .foregroundColor(colorScheme == .dark ? .white : .black)
         }
         .background(RoundedRectangle(cornerRadius: 20))
