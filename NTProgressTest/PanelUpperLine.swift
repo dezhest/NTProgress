@@ -12,6 +12,7 @@ struct PanelUpperLine: View {
     var body: some View {
         HStack {
             ZStack {
+                Spacer()
                 HStack {
                     Text("Date")
                         .font(.system(size: 9.5, design: .default))

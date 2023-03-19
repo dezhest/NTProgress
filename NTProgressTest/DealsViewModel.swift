@@ -37,9 +37,7 @@ class DealsViewModel: ObservableObject {
             print("возобновлен")
         }
         DispatchQueue.main.async { [self] in
-//            if selectedSortingOption != .side {
                 deals = deals.sorted(by: sortingMethod)
-//            }
         }
         print("остановлен")
     }

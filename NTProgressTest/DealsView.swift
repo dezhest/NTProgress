@@ -46,10 +46,7 @@ struct DealsView: View {
             }
             if viewModel.isPaused == true {
                 ZStack{
-//                    withAnimation(.linear){
                     LoadingCircle()
-//                                            .animation(Animation.linear(duration: 100).repeatForever(autoreverses: true))
-//                }
                     Text(" ")
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                         .background(Color.black)
