@@ -13,7 +13,7 @@ class DealsViewModel: ObservableObject {
     @Published var deals: [Deal] = []
 
     lazy var sortingMethod = model.dataSortUp {
-        didSet {
+        willSet {
             if model.isPaused {
                 print("уже остановлен")
                 model.shouldStartTimerAfterPause = true
