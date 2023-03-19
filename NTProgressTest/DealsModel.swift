@@ -40,9 +40,9 @@ class DealsModel {
         deal.amount < deal2.amount
     }
     var sideSortUp: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
-        deal.side.hashValue > deal2.side.hashValue
+        deal.side.hashValue < deal2.side.hashValue
     }
     var sideSortDown: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
-        deal.side.hashValue < deal2.side.hashValue
+        deal.side.hashValue > deal2.side.hashValue
     }
 }
