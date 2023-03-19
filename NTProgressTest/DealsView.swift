@@ -33,7 +33,7 @@ struct DealsView: View {
                             Menu {
                                 ForEach(SortType.allCases, id: \.self) { option in
                                     Button(option.rawValue) {
-                                        viewModel.selectedSortingOption = option
+                                        viewModel.model.selectedSortingOption = option
                                     }
                                 }
                             } label: {
@@ -44,7 +44,7 @@ struct DealsView: View {
                 }
                 .navigationBarTitle("Deals")
             }
-            if viewModel.isPaused == true {
+            if viewModel.model.isPaused == true {
                 ZStack{
                     LoadingCircle()
                     Text(" ")
