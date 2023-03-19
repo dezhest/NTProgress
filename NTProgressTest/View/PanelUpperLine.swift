@@ -41,7 +41,7 @@ struct PanelUpperLine: View {
             Spacer()
             typeAndArrow(type: "Side", typeValueEnum: .side)
             .onTapGesture {
-                viewModel.changeTypeByTap(viewModel.model.sideSortUp, viewModel.model.sideSortDown)
+                viewModel.changeTypeByTap(viewModel.model.sideSortDown, viewModel.model.sideSortUp)
                 viewModel.model.selectedSortingOption = .side
                 viewModel.model.destinationArrow.toggle()
             }
@@ -56,21 +56,24 @@ struct PanelUpperLine: View {
             Spacer()
             HStack {
                 Text(type)
-                    .font(.system(size: 9.5, design: .default))
+                    .font(.system(size: 12, design: .default))
                     .foregroundColor(.blue)
                 if viewModel.model.destinationArrow {
                     Image(systemName: "arrow.up")
                         .resizable()
-                        .frame(width: 6, height: 8)
+                        .frame(width: 8, height: 10)
                         .foregroundColor(.green)
                         .opacity(viewModel.model.selectedSortingOption == typeValueEnum ? 100 : 0)
+                        .offset(x: -5)
                 } else {
                     Image(systemName: "arrow.down")
                         .resizable()
-                        .frame(width: 6, height: 8)
+                        .frame(width: 8, height: 10)
                         .foregroundColor(.red)
                         .opacity(viewModel.model.selectedSortingOption == typeValueEnum ? 100 : 0)
+                        .offset(x: -5)
                 }
+                    
             }
         }
     }

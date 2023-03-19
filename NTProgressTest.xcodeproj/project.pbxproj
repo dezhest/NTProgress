@@ -52,6 +52,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C392BA8529C723450020001F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C3A0EF1729B792E80018DBE1 /* DealsView.swift */,
+				C392BA8129C663F20020001F /* LoadingCircle.swift */,
+				C392BA7B29C4BCB80020001F /* CardView.swift */,
+				C30FC3B829BBAC3900284099 /* PanelUpperLine.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C3A0EF0929B792E80018DBE1 = {
 			isa = PBXGroup;
 			children = (
@@ -71,16 +82,13 @@
 		C3A0EF1429B792E80018DBE1 /* NTProgressTest */ = {
 			isa = PBXGroup;
 			children = (
+				C392BA8529C723450020001F /* View */,
+				C3A9872B29BA5EB400F61302 /* Extension */,
 				C3A0EF1529B792E80018DBE1 /* NTProgressTestApp.swift */,
-				C3A0EF2829B7B29B0018DBE1 /* SortType.swift */,
 				C3A0EF2329B7932F0018DBE1 /* Server.swift */,
 				C39FB39929BA4D3700968FB8 /* DealsModel.swift */,
-				C3A0EF1729B792E80018DBE1 /* DealsView.swift */,
 				C39FB39729BA4D1100968FB8 /* DealsViewModel.swift */,
-				C30FC3B829BBAC3900284099 /* PanelUpperLine.swift */,
-				C392BA7B29C4BCB80020001F /* CardView.swift */,
-				C392BA8129C663F20020001F /* LoadingCircle.swift */,
-				C3A9872B29BA5EB400F61302 /* Extension */,
+				C3A0EF2829B7B29B0018DBE1 /* SortType.swift */,
 				C3A0EF1929B792EA0018DBE1 /* Assets.xcassets */,
 				C3A0EF1B29B792EA0018DBE1 /* Preview Content */,
 			);

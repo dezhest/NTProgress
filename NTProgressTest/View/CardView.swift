@@ -46,16 +46,6 @@ struct CardView: View {
         .frame(height: 100)
     }
 }
-extension CardView: Equatable {
-  static func == (lhs: CardView, rhs: CardView) -> Bool {
-      return lhs.deal.dateModifier == rhs.deal.dateModifier &&
-      lhs.deal.price == rhs.deal.price &&
-      lhs.deal.amount == rhs.deal.amount &&
-      lhs.deal.side == rhs.deal.side &&
-      lhs.deal.instrumentName == rhs.deal.instrumentName &&
-      lhs.deal.id == rhs.deal.id
-  }
-}
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
