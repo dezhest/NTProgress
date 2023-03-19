@@ -28,23 +28,10 @@ struct DealsView: View {
                         }
                         .offset(y: -8)
                     }
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Menu {
-                                ForEach(SortType.allCases, id: \.self) { option in
-                                    Button(option.rawValue) {
-                                        viewModel.model.selectedSortingOption = option
-                                    }
-                                }
-                            } label: {
-                                Image(systemName: "arrow.up.arrow.down")
-                            }
-                        }
-                    }
                 }
                 .navigationBarTitle("Deals")
             }
-            if viewModel.model.isPaused == true {
+            if viewModel.isPaused == true {
                 ZStack{
                     LoadingCircle()
                     Text(" ")

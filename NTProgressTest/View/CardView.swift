@@ -16,7 +16,7 @@ struct CardView: View {
                 .font(.system(size: 12, design: .default))
                 .foregroundColor(.gray)
                 .frame(maxWidth: .infinity, maxHeight: 30 ,alignment: .leading)
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 10)
             Spacer()
             HStack {
                 Spacer()

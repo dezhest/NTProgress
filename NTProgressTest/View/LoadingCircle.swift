@@ -31,9 +31,6 @@ struct LoadingCircle: View {
     }
 }
 
-
-
-
 struct LoadingCircle_Previews: PreviewProvider {
     static var previews: some View {
         LoadingCircle()

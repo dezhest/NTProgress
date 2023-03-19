@@ -12,7 +12,6 @@
 		C392BA7E29C623B50020001F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392BA7D29C623B50020001F /* Date.swift */; };
 		C392BA8229C663F20020001F /* LoadingCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392BA8129C663F20020001F /* LoadingCircle.swift */; };
 		C39FB39829BA4D1100968FB8 /* DealsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39FB39729BA4D1100968FB8 /* DealsViewModel.swift */; };
-		C39FB39A29BA4D3700968FB8 /* DealsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39FB39929BA4D3700968FB8 /* DealsModel.swift */; };
 		C3A0EF1629B792E80018DBE1 /* NTProgressTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A0EF1529B792E80018DBE1 /* NTProgressTestApp.swift */; };
 		C3A0EF1829B792E80018DBE1 /* DealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A0EF1729B792E80018DBE1 /* DealsView.swift */; };
 		C3A0EF1A29B792EA0018DBE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3A0EF1929B792EA0018DBE1 /* Assets.xcassets */; };
@@ -29,7 +28,6 @@
 		C392BA7D29C623B50020001F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		C392BA8129C663F20020001F /* LoadingCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCircle.swift; sourceTree = "<group>"; };
 		C39FB39729BA4D1100968FB8 /* DealsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsViewModel.swift; sourceTree = "<group>"; };
-		C39FB39929BA4D3700968FB8 /* DealsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsModel.swift; sourceTree = "<group>"; };
 		C3A0EF1229B792E80018DBE1 /* NTProgressTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NTProgressTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3A0EF1529B792E80018DBE1 /* NTProgressTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTProgressTestApp.swift; sourceTree = "<group>"; };
 		C3A0EF1729B792E80018DBE1 /* DealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsView.swift; sourceTree = "<group>"; };
@@ -86,7 +84,6 @@
 				C3A9872B29BA5EB400F61302 /* Extension */,
 				C3A0EF1529B792E80018DBE1 /* NTProgressTestApp.swift */,
 				C3A0EF2329B7932F0018DBE1 /* Server.swift */,
-				C39FB39929BA4D3700968FB8 /* DealsModel.swift */,
 				C39FB39729BA4D1100968FB8 /* DealsViewModel.swift */,
 				C3A0EF2829B7B29B0018DBE1 /* SortType.swift */,
 				C3A0EF1929B792EA0018DBE1 /* Assets.xcassets */,
@@ -186,7 +183,6 @@
 				C39FB39829BA4D1100968FB8 /* DealsViewModel.swift in Sources */,
 				C3A0EF1829B792E80018DBE1 /* DealsView.swift in Sources */,
 				C3A0EF2429B7932F0018DBE1 /* Server.swift in Sources */,
-				C39FB39A29BA4D3700968FB8 /* DealsModel.swift in Sources */,
 				C3A9872D29BA5ECF00F61302 /* String.swift in Sources */,
 				C3A0EF1629B792E80018DBE1 /* NTProgressTestApp.swift in Sources */,
 				C3A9872F29BA5EE900F61302 /* Formatter.swift in Sources */,

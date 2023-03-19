@@ -11,7 +11,6 @@ extension String {
     var removeChars: String {
         var str = self
         str = str.components(separatedBy: ("_"))[0]
-        str = str.filter { $0 != "/" }
         return str
     }
 }
