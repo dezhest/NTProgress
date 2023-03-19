@@ -55,10 +55,10 @@ class DealsViewModel: ObservableObject {
         deal.dateModifier.timeIntervalSince1970 < deal2.dateModifier.timeIntervalSince1970
     }
     var nameSortUp: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
-        deal.instrumentName > deal2.instrumentName
+        deal.instrumentName < deal2.instrumentName
     }
     var nameSortDown: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
-        deal.instrumentName < deal2.instrumentName
+        deal.instrumentName > deal2.instrumentName
     }
     var priceSortUp: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
         deal.price > deal2.price
@@ -147,5 +147,13 @@ class DealsViewModel: ObservableObject {
             }
         }
         return mergedData
+    }
+    func changeTypeByTap(_ typeUp : @escaping (Deal, Deal) -> Bool, _ typeDown: @escaping (Deal, Deal) -> Bool) {
+        if destinationArrow {
+            sortingMethod = typeDown
+        }
+        else {
+            sortingMethod = typeUp
+        }
     }
 }
