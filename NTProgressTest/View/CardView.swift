@@ -35,6 +35,7 @@ struct CardView: View {
                     .foregroundColor(deal.side == .buy ? .green : .red)
                 Spacer()
             }
+            .padding(.bottom, 10)
             .foregroundColor(colorScheme == .dark ? .white : .black)
         }
         .background(RoundedRectangle(cornerRadius: 20))

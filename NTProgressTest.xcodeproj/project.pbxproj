@@ -11,6 +11,7 @@
 		C392BA7C29C4BCB80020001F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392BA7B29C4BCB80020001F /* CardView.swift */; };
 		C392BA7E29C623B50020001F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392BA7D29C623B50020001F /* Date.swift */; };
 		C392BA8229C663F20020001F /* LoadingCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392BA8129C663F20020001F /* LoadingCircle.swift */; };
+		C392BA8929C86ABB0020001F /* ComparedSortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392BA8829C86ABB0020001F /* ComparedSortType.swift */; };
 		C39FB39829BA4D1100968FB8 /* DealsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39FB39729BA4D1100968FB8 /* DealsViewModel.swift */; };
 		C3A0EF1629B792E80018DBE1 /* NTProgressTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A0EF1529B792E80018DBE1 /* NTProgressTestApp.swift */; };
 		C3A0EF1829B792E80018DBE1 /* DealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A0EF1729B792E80018DBE1 /* DealsView.swift */; };
@@ -27,6 +28,7 @@
 		C392BA7B29C4BCB80020001F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		C392BA7D29C623B50020001F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		C392BA8129C663F20020001F /* LoadingCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCircle.swift; sourceTree = "<group>"; };
+		C392BA8829C86ABB0020001F /* ComparedSortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparedSortType.swift; sourceTree = "<group>"; };
 		C39FB39729BA4D1100968FB8 /* DealsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsViewModel.swift; sourceTree = "<group>"; };
 		C3A0EF1229B792E80018DBE1 /* NTProgressTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NTProgressTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3A0EF1529B792E80018DBE1 /* NTProgressTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTProgressTestApp.swift; sourceTree = "<group>"; };
@@ -81,13 +83,14 @@
 			isa = PBXGroup;
 			children = (
 				C392BA8529C723450020001F /* View */,
-				C3A9872B29BA5EB400F61302 /* Extension */,
 				C3A0EF1529B792E80018DBE1 /* NTProgressTestApp.swift */,
-				C3A0EF2329B7932F0018DBE1 /* Server.swift */,
 				C39FB39729BA4D1100968FB8 /* DealsViewModel.swift */,
+				C3A0EF2329B7932F0018DBE1 /* Server.swift */,
 				C3A0EF2829B7B29B0018DBE1 /* SortType.swift */,
-				C3A0EF1929B792EA0018DBE1 /* Assets.xcassets */,
+				C392BA8829C86ABB0020001F /* ComparedSortType.swift */,
+				C3A9872B29BA5EB400F61302 /* Extension */,
 				C3A0EF1B29B792EA0018DBE1 /* Preview Content */,
+				C3A0EF1929B792EA0018DBE1 /* Assets.xcassets */,
 			);
 			path = NTProgressTest;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				C392BA7E29C623B50020001F /* Date.swift in Sources */,
 				C392BA7C29C4BCB80020001F /* CardView.swift in Sources */,
 				C392BA8229C663F20020001F /* LoadingCircle.swift in Sources */,
+				C392BA8929C86ABB0020001F /* ComparedSortType.swift in Sources */,
 				C3A0EF2929B7B29B0018DBE1 /* SortType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

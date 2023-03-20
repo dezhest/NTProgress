@@ -13,35 +13,35 @@ struct PanelUpperLine: View {
         HStack {
             typeAndArrow(type: "Date", typeValueEnum: .date)
             .onTapGesture {
-                viewModel.changeTypeByTap(viewModel.dataSortUp, viewModel.dataSortDown)
+                viewModel.changeTypeByTap(ComparedSortType.dateSortUp, ComparedSortType.dateSortDown)
                 viewModel.selectedSortingOption = .date
                 viewModel.destinationArrow.toggle()
             }
             Spacer()
             typeAndArrow(type: "Instrument", typeValueEnum: .name)
             .onTapGesture {
-                viewModel.changeTypeByTap(viewModel.nameSortUp, viewModel.nameSortDown)
+                viewModel.changeTypeByTap(ComparedSortType.nameSortUp, ComparedSortType.nameSortDown)
                 viewModel.selectedSortingOption = .name
                 viewModel.destinationArrow.toggle()
             }
             Spacer()
             typeAndArrow(type: "Price", typeValueEnum: .price)
             .onTapGesture {
-                viewModel.changeTypeByTap(viewModel.priceSortUp, viewModel.priceSortDown)
+                viewModel.changeTypeByTap(ComparedSortType.priceSortUp, ComparedSortType.priceSortDown)
                 viewModel.selectedSortingOption = .price
                 viewModel.destinationArrow.toggle()
             }
             Spacer()
             typeAndArrow(type: "Amount", typeValueEnum: .amount)
             .onTapGesture {
-                viewModel.changeTypeByTap(viewModel.amountSortUp, viewModel.amountSortDown)
+                viewModel.changeTypeByTap(ComparedSortType.amountSortUp, ComparedSortType.amountSortDown)
                 viewModel.selectedSortingOption = .amount
                 viewModel.destinationArrow.toggle()
             }
             Spacer()
             typeAndArrow(type: "Side", typeValueEnum: .side)
             .onTapGesture {
-                viewModel.changeTypeByTap(viewModel.sideSortDown, viewModel.sideSortUp)
+                viewModel.changeTypeByTap(ComparedSortType.sideSortDown, ComparedSortType.sideSortUp)
                 viewModel.selectedSortingOption = .side
                 viewModel.destinationArrow.toggle()
             }

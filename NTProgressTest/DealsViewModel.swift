@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class DealsViewModel: ObservableObject {
+final class DealsViewModel: ObservableObject {
     private let server = Server()
     @Published var deals: [Deal] = []
     var newDealsToSort: [Deal] = []
@@ -17,57 +17,25 @@ class DealsViewModel: ObservableObject {
     var isPaused = false
     var shouldStartTimerAfterPause = false
     
-    var dataSortUp: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
-        deal.dateModifier.timeIntervalSince1970 > deal2.dateModifier.timeIntervalSince1970
-    }
-    var dataSortDown: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
-        deal.dateModifier.timeIntervalSince1970 < deal2.dateModifier.timeIntervalSince1970
-    }
-    var nameSortUp: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
-        deal.instrumentName < deal2.instrumentName
-    }
-    var nameSortDown: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
-        deal.instrumentName > deal2.instrumentName
-    }
-    var priceSortUp: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
-        deal.price > deal2.price
-    }
-    var priceSortDown: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
-        deal.price < deal2.price
-    }
-    var amountSortUp: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
-        deal.amount > deal2.amount
-    }
-    var amountSortDown: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
-        deal.amount < deal2.amount
-    }
-    var sideSortUp: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
-        deal.side.hashValue < deal2.side.hashValue
-    }
-    var sideSortDown: (Deal, Deal) -> Bool = { (deal: Deal, deal2: Deal) -> Bool in
-        deal.side.hashValue > deal2.side.hashValue
-    }
-    lazy var sortingMethod = dataSortUp {
+    lazy var sortingMethod = ComparedSortType.dateSortUp {
         willSet {
             if isPaused {
                 shouldStartTimerAfterPause = true
             } else {
-                self.isPaused = true
+                isPaused = true
                 pauseTimer()
             }
         }
     }
     func pauseTimer() {
         timer?.invalidate()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.resumeTimer()
-            self.startDealsPipe()
-            print("возобновлен")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
+            resumeTimer()
+            startDealsPipe()
         }
         DispatchQueue.main.async { [self] in
             deals = deals.sorted(by: sortingMethod)
         }
-        print("остановлен")
     }
     func resumeTimer() {
         isPaused = false
@@ -83,7 +51,6 @@ class DealsViewModel: ObservableObject {
             newDealsToSort = []
         }
     }
-    
     func startDealsPipe() {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.updateDeals()
@@ -91,7 +58,7 @@ class DealsViewModel: ObservableObject {
         self.server.subscribeToDeals { [self] newDeals in
             DispatchQueue.main.async { [self] in
                 if deals.isEmpty {
-                    deals = getMergedDataArrayDate(sortedData:  [], newData: newDeals, sortingMethod: dataSortUp)
+                    deals = getMergedDataArrayDate(sortedData:  [], newData: newDeals, sortingMethod: ComparedSortType.dateSortUp)
                 } else {
                     newDealsToSort += newDeals
                 }
